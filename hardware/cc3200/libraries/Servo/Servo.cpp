@@ -246,3 +246,8 @@ void ServoIntHandler(void)
 		currentServo = 0; // Start all over again
 	}
 }
+
+bool Servo::attached()
+{
+	return servos[this->index].enabled;
+}
