@@ -460,6 +460,20 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 #define PIN_TO_SERVO(p)         (p)
 //#define TOTAL_PORTS				10
 
+// CC3200 Launchpad
+#elif defined(__CC3200R1M1RGC__)
+#define TOTAL_ANALOG_PINS       10
+#define TOTAL_PINS              40
+#define VERSION_BLINK_PIN       0
+#define IS_PIN_DIGITAL(p)       ((p) >= 1 && (p) != 15 && !((p) >=19 && (p) <= 21) && (p) < TOTAL_PINS)
+#define IS_PIN_ANALOG(p)        ((p) == 8 || (p) == 9 || (p) == 12 || (p) == 30 || ((p) >= 35 && (p) < TOTAL_PINS))
+#define IS_PIN_PWM(p)           digitalPinHasPWM(p)
+#define IS_PIN_SERVO(p)         IS_PIN_DIGITAL(p)
+#define IS_PIN_I2C(p)           ((p) == 8 || (p) == 9 || (p) == 38 || (p) == 39)
+#define PIN_TO_DIGITAL(p)       (p)
+#define PIN_TO_ANALOG(p)        (p)
+#define PIN_TO_PWM(p)           PIN_TO_DIGITAL(p)
+#define PIN_TO_SERVO(p)         (p)
 
 
 // anything else
