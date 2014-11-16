@@ -1,16 +1,16 @@
 #!/bin/bash
 
-LIBRARIES="aJson PubNub Temboo MQTTClient PubSubClient"
+LIBRARIES="aJson PubNub Temboo MQTTClient PubSubClient Firmata"
 ARCHES="msp430 lm4f cc3200"
 OSTYPE=`uname`
 
 if [[ "$OSTYPE" == "Linux" ]]; then
-	OS_PATH="linux/work/hardware"
+	OS_PATH="../build/linux/work/hardware"
 elif [[ "$OSTYPE" == "Darwin" ]]; then
-	OS_PATH="macosx/work/Energia.app/Contents/Resources/Java/hardware"
+	OS_PATH="../build/macosx/work/hardware"
 	echo $OS_PATH
 elif [[ "$OSTYPE" == "MINGW32_NT-6.2" ]]; then
-	OS_PATH="windows/work/hardware"
+	OS_PATH="../build/windows/work/hardware"
 fi
 
 
