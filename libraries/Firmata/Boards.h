@@ -462,14 +462,17 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 
 // CC3200 Launchpad
 #elif defined(__CC3200R1M1RGC__)
-#define TOTAL_ANALOG_PINS       10
-#define TOTAL_PINS              40
-#define VERSION_BLINK_PIN       0
-#define IS_PIN_DIGITAL(p)       ((p) >= 1 && (p) != 15 && !((p) >=19 && (p) <= 21) && (p) < TOTAL_PINS)
-#define IS_PIN_ANALOG(p)        ((p) == 8 || (p) == 9 || (p) == 12 || (p) == 30 || ((p) >= 35 && (p) < TOTAL_PINS))
-#define IS_PIN_PWM(p)           digitalPinHasPWM(p)
-#define IS_PIN_SERVO(p)         IS_PIN_DIGITAL(p)
-#define IS_PIN_I2C(p)           ((p) == 8 || (p) == 9 || (p) == 38 || (p) == 39)
+#define TOTAL_ANALOG_PINS       7
+#define TOTAL_PINS              41
+#define VERSION_BLINK_PIN       29
+#define IS_PIN_DIGITAL(p)       ((p) >= 2 && (p) != 16 && (p) != 20 && (p) != 21 && (p) != 22 && (p) < TOTAL_PINS)
+#define IS_PIN_ANALOG(p)        ((p) == 2 || (p) == 6 || ((p) >= 23 && (p) <= 26) || (p) == 33)
+//((p) == 8 || (p) == 9 || (p) == 12 || (p) == 30 || ((p) >= 35 && (p) < TOTAL_PINS))
+#define IS_PIN_PWM(p)           ((p) == 9 || (p) == 10 || (p) == 13 || (p) == 29 || (p) == 31 || ((p) >= 36 && (p) < TOTAL_PINS))
+//digitalPinHasPWM(p)
+#define IS_PIN_SERVO(p)         IS_PIN_PWM(p)
+#define IS_PIN_I2C(p)           ((p) == 3  || (p) == 4  || (p) == 7  || (p) == 9  || (p) == 10 || \
+                                 (p) == 12 || (p) == 14 || (p) == 15 || (p) == 18 || (p) == 39 || (p) == 40)
 #define PIN_TO_DIGITAL(p)       (p)
 #define PIN_TO_ANALOG(p)        (p)
 #define PIN_TO_PWM(p)           PIN_TO_DIGITAL(p)
