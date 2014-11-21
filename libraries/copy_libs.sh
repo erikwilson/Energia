@@ -9,16 +9,15 @@ if [[ "$OSTYPE" == "Linux" ]]; then
 elif [[ "$OSTYPE" == "Darwin" ]]; then
 	OS_PATH="../build/macosx/work/hardware"
 	echo $OS_PATH
-elif [[ "$OSTYPE" == "MINGW32_NT-6.2" ]]; then
+elif [[ "$OSTYPE" == *_NT-* ]]; then
 	OS_PATH="../build/windows/work/hardware"
 fi
-
 
 for ARCH in $ARCHES
 do
 	echo $ARCH
 	for LIBRARY in $LIBRARIES
 	do
-		rsync -av --exclude=".*" ../libraries/$LIBRARY $OS_PATH/$ARCH/libraries/ > /dev/null 2>&1
+		rsync -av --exclude=".*" ../libraries/$LIBRARY $OS_PATH/$ARCH/libraries/ >/dev/null 2>&1
 	done
 done
